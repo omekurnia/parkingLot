@@ -39,10 +39,10 @@ function check_n() {
 }
 
 function leave(slot_num_leave) {
-    fs.readFile(parking_lot, {encoding: 'utf-8'}, function(err, data) {
+    fs.readFile(parking_lot, {encoding: "utf-8"}, function(err, data) {
         if (err) throw error;
     
-        var dataArray = data.split('\n');
+        var dataArray = data.split("\n");
         var lastIndex = -1;
 
         for (var index=0; index<dataArray.length; index++) {
@@ -54,8 +54,8 @@ function leave(slot_num_leave) {
     
         dataArray.splice(lastIndex, 1);
     
-        const updatedData = dataArray.join('\n');
-        fs.writeFile('parking_lot.txt', updatedData, (err) => {
+        const updatedData = dataArray.join("\n");
+        fs.writeFile("parking_lot.txt", updatedData, (err) => {
             if (err) throw err;
             console.log("Slot number" + " " + slot_num_leave + " " + "is free")
         });
@@ -65,7 +65,7 @@ function leave(slot_num_leave) {
 
 function check_regnum(color) {
     var newStatus = fs.readFileSync(parking_lot).toString();
-    var dataArray = newStatus.split('\n');
+    var dataArray = newStatus.split("\n");
     newLine = "";
     for (line of dataArray) {
         if (line.includes(color)) {
@@ -77,7 +77,7 @@ function check_regnum(color) {
 
 function check_slot_num(color) {
     var newStatus = fs.readFileSync(parking_lot).toString();
-    var dataArray = newStatus.split('\n');
+    var dataArray = newStatus.split("\n");
     var newLine = "";
     for (line of dataArray) {
         if (line.includes(color)) {
@@ -89,7 +89,7 @@ function check_slot_num(color) {
 
 function check_regnum(regnum) {
     var newStatus = fs.readFileSync(parking_lot).toString();
-    var dataArray = newStatus.split('\n');
+    var dataArray = newStatus.split("\n");
     var newLine = "";
     for (line of dataArray) {
         if (line.includes(regnum)) {
@@ -104,12 +104,12 @@ if (input.includes("status")) {
     if (fs.existsSync(parking_lot)) {
         console.log(status());
     } else {
-        console.log("Can not find parking lot file. Write command 'create_parking_lot' to create a new one.");
+        console.log("Can not find parking lot file. Write command "create_parking_lot" to create a new one.");
     }
 } else if (input.includes("create_parking_lot")) {
     var slot = input.split(" ")[1];
     if (fs.existsSync(parking_lot)) {
-        console.log("Can not create. We already register a parking lot. Write command 'status' to see the status");
+        console.log("Can not create. We already register a parking lot. Write command "status" to see the status");
     } else {
         create_parking_lot();
         save_slot_num();
@@ -127,7 +127,7 @@ if (input.includes("status")) {
     if (fs.existsSync(parking_lot)) {
         check_n();
     } else {
-        console.log("Can not find parking lot text file. Write command 'create_parking_lot' to create a new one.");
+        console.log("Can not find parking lot text file. Write command "create_parking_lot" to create a new one.");
     }
 } else if (input.includes("leave")) {
     var slot_num_leave = input.split(" ")[1];
